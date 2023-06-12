@@ -1,0 +1,116 @@
+% layout 'default';
+% title 'Обращения';
+
+% content_for current_table => begin
+
+<h2 class="mb-3">Обращения</h2>
+
+<div class="input-group mb-4">
+    <div class="form-outline">
+        <input type="search" id="search-appeal-value" class="form-control" />
+        <label class="form-label" for="search-appeal">Найти</label>
+    </div>
+    <button type="button" id="search-appeal-btn" class="btn btn-link me-4">
+        <i class="fas fa-search"></i>
+    </button>
+    <button type="button" id="add-row-btn" class="btn btn-link" data-mdb-toggle="modal"
+        data-mdb-target="#add-appeal-modal">
+        <i class="fas fa-plus"></i>
+    </button>
+    <button type="button" id="edit-row-btn" class="btn btn-link disabled">
+        <i class="fas far fa-edit"></i>
+    </button>
+    <button type="button" id="del-row-btn" class="btn btn-link disabled">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+</div>
+
+<div id="appeals-table" class="w-100"></div>
+
+<div class="modal fade" id="add-appeal-modal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="call-center-appeal-label">Введите данные обращения в колл-центр</h5>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <!-- Client information -->
+                    <div class="mb-4 d-none">
+                        <div class="form-outline">
+                            <input type="text" id="appeal-id" class="form-control" readonly />
+                            <label class="form-label" for="appeal-id">Идентификатор</label>
+                        </div>
+                    </div>
+                    <h6 class="mb-3">Информация о клиенте</h6>
+                    <div class="mb-4">
+                        <div class="form-outline"> <input type="text" id="client-full-name" class="form-control" />
+                            <label class="form-label" for="client-full-name">ФИО клиента</label>
+                        </div>
+                    </div>
+                    <!-- Operator information -->
+                    <h6 class="mb-3">Информация об операторе</h6>
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="operator-full-name" class="form-control" />
+                            <label class="form-label" for="operator-full-name">ФИО оператора</label>
+                        </div>
+                    </div>
+
+                    <!-- Appeal reason -->
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="appeal-reason" class="form-control" />
+                            <label class="form-label" for="appeal-reason">Причина обращения</label>
+                        </div>
+                    </div>
+
+                    <!-- Appeal result -->
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="appeal-result" class="form-control" />
+                            <label class="form-label" for="appeal-result">Результат обращения</label>
+                        </div>
+                    </div>
+
+                    <!-- Client comment -->
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <textarea id="client-comment" class="form-control" rows="3"></textarea>
+                            <label class="form-label" for="client-comment">Комментарий от клиента</label>
+                        </div>
+                    </div>
+
+                    <!-- Appeal status -->
+                    <div class="mb-4">
+                        <label class="form-label" for="appeal-status">Статус обращения</label>
+                        <select class="form-select" id="appeal-status">
+                            <option selected>Выберите статус</option>
+                            <option value="success">Успешно</option>
+                            <option value="unsuccessful">Неуспешно</option>
+                            <option value="not-processed">Не обработано</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="discard-appeal-btn"
+                        class="btn shadow-0 btn-md btn-outline-primary modal-discard-button" data-mdb-dismiss="modal">
+                        Отмена
+                    </button>
+                    <button type="button" id="save-appeal-btn" class="btn shadow-0 btn-md btn-primary me-2">
+                        Сохранить
+                    </button>
+                    <button type="button" id="change-appeal-btn" class="btn shadow-0 btn-md btn-primary me-2">
+                        Изменить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+% end
+
+% content_for user_script => begin
+%= javascript '/js/appeals.js'
+% end

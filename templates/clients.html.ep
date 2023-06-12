@@ -1,0 +1,104 @@
+% layout 'default';
+% title 'Клиенты';
+
+% content_for current_table => begin
+
+<h2 class="mb-3">Клиенты call-центра</h2>
+
+<div class="input-group mb-4">
+    <div class="form-outline">
+        <input type="search" id="search-client-value" class="form-control" />
+        <label class="form-label" for="search-client">Найти</label>
+    </div>
+    <button type="button" id="search-client-btn" class="btn btn-link me-4">
+        <i class="fas fa-search"></i>
+    </button>
+    <button type="button" id="add-row-btn" class="btn btn-link" data-mdb-toggle="modal"
+        data-mdb-target="#add-client-modal">
+        <i class="fas fa-plus"></i>
+    </button>
+    <button type="button" id="edit-row-btn" class="btn btn-link disabled">
+        <i class="fas far fa-edit"></i>
+    </button>
+    <button type="button" id="del-row-btn" class="btn btn-link disabled">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+</div>
+
+<div id="client-table" class="w-100"></div>
+
+<div class="modal fade" id="add-client-modal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-client-modal-label">Введите данные нового клиента</h5>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="mb-4 d-none">
+                        <div class="form-outline">
+                            <input type="text" id="client-id" class="form-control" readonly />
+                            <label class="form-label" for="client-id">Идентификатор</label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="client-last-name" class="form-control" />
+                            <label class="form-label" for="client-last-name">Фамилия</label>
+                            <div id="valid-last-name" class="valid-feedback"></div>
+                            <div id="invalid-last-name" class="invalid-feedback">Фамилия записана неправильно</div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="client-first-name" class="form-control" />
+                            <label class="form-label" for="client-first-name">Имя</label>
+                            <div id="valid-first-name" class="valid-feedback"></div>
+                            <div id="invalid-first-name" class="invalid-feedback">Имя записано неправильно</div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="client-patronymic" class="form-control" />
+                            <label class="form-label" for="client-patronymic">Отчество</label>
+                            <div id="valid-patronymic" class="valid-feedback"></div>
+                            <div id="invalid-patronymic" class="invalid-feedback">Отчество записано неправильно
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="date" id="client-birth-date" class="form-control" />
+                            <label class="form-label" for="client-birth-date">Дата рождения</label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-outline">
+                            <input type="tel" id="client-phone-number" class="form-control" />
+                            <label class="form-label" for="client-phone-number">Номер телефона</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="discard-client-btn"
+                        class="btn shadow-0 btn-md btn-outline-primary modal-discard-button" data-mdb-dismiss="modal">
+                        Отмена
+                    </button>
+                    <button type="button" id="save-client-btn" class="btn shadow-0 btn-md btn-primary me-2">
+                        Сохранить
+                    </button>
+                    <button type="button" id="change-client-btn" class="btn shadow-0 btn-md btn-primary me-2">
+                        Изменить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+% end
+
+% content_for user_script => begin
+%= javascript '/js/clients.js'
+% end

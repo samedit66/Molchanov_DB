@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>
+        %= title
+    </title>
+
+    %= stylesheet 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+    %= stylesheet 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap'
+    %= stylesheet '/css/tabulator_bootstrap5.css'
+    %= stylesheet '/css/mdb.min.css'
+</head>
+
+<body>
+    <div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center mb-5">
+            <button type="button" class="btn btn-link" data-mdb-ripple-color="light">
+                <a href="<%= url_for 'clients' %>" style="font-size: 14px;">
+                    <i class="fas fa-elevator me-2"></i>Клиенты
+                </a>
+            </button>
+            <button type="button" class="btn btn-link" data-mdb-ripple-color="light">
+                <a href="<%= url_for 'appeals' %>" style="font-size: 14px;">
+                    <i class="fas fa-book me-2"></i>Обращения
+                </a>
+            </button>
+        </div>
+
+        %= content 'current_table'
+    </div>
+
+    %= javascript '/js/jquery-3.7.0.js'
+    %= javascript '/js/tabulator.js'
+    %= javascript '/js/mdb.min.js'
+
+    %= content 'user_script'
+</body>
+
+</html>
